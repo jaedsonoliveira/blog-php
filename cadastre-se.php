@@ -1,6 +1,8 @@
 <?php require 'pages/header.php'; ?>
+<link rel="stylesheet" href="assets/css/style.css">
 
-<div class="">
+
+<div class="cadastrar">
     <h1>Cadastre-se</h1>
 
     <?php
@@ -41,20 +43,27 @@
     }
     ?>
 
-    <form method="post">
-        <label for="nome">Nome:</label>
-        <input type="text" name="nome" id="nome">
+    <form class="form-cadastrar" method="post">
+        <div class="form-group">
+        <label class="label" for="nome">Nome:</label>
+        <input class="input" type="text" name="nome" id="nome">
+        </div>
 
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="nome">
+        <div class="form-group">
+        <label class="label" for="email">Email:</label>
+        <input class="input" type="email" name="email" id="nome">
+        </div>
 
-        <label for="senha">Senha:</label>
-        <input type="password" name="senha" id="senha">
+        <div class="form-group">
+        <label class="label" for="senha">Senha:</label>
+        <input class="input" type="password" name="senha" id="senha">
+        </div>
 
-        <label for="telefobe">Telefone:</label>
-        <input type="text" name="telefone" id="telefone">
-
-        <input type="submit" value="Cadastrar">
+        <div class="form-group">
+        <label class="label" for="telefone">Telefone:</label>
+        <input class="input" type="text" name="telefone" id="telefone">
+        </div>
+        <input class="btn-cadastrar" type="submit" value="Cadastrar">
     </form>
 </div>
 

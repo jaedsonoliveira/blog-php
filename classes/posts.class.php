@@ -17,6 +17,21 @@ class Posts{
         return $array;
     }
 
+    //pega os posts na pagina inicial
+    public function getUltimosPosts(){
+        global $pdo;
+
+        $array = array();
+        $sql = $pdo->prepare("SELECT *, (select posts_imagens.url from posts_imagens where posts_imagens.id_post = posts.id limit 1) as url, (select categorias.nome from categorias where categorias.id = posts.id_categoria) as categoria FROM posts ORDER BY id DESC");
+        $sql->execute();
+
+        if($sql->rowCount() > 0){
+            $array = $sql->fetchAll();
+        }
+
+        return $array;
+    }
+
     //Pegar dados salvos do Post
     public function getPost($id){
         $array = array();
@@ -29,6 +44,16 @@ class Posts{
 
         if($sql->rowCount() > 0){
             $array = $sql->fetch();
+            $array['fotos'] = array();
+
+            $sql= $pdo->prepare("SELECT id,url FROM posts_imagens WHERE id_post = :id_post");
+
+            $sql->bindValue(":id_post", $id);
+            $sql->execute();
+
+            if($sql->rowCount() > 0){
+                $array['fotos'] = $sql->fetchAll();
+            }
         }
 
         return $array;
@@ -59,7 +84,8 @@ class Posts{
         $sql->execute();
 
         if(count($fotos) > 0){
-            for($q=0; $q<count($fotos['tmp_name']); $q++){
+            
+           for($q=0; $q<count($fotos['tmp_name']); $q++){
                 $tipo = $fotos['type'][$q];
                 if(in_array($tipo,array('image/jpeg', 'image/png'))){
                     $tmpname = md5(time().rand(0,9999)).'.jpg';
@@ -89,17 +115,16 @@ class Posts{
  
                     imagejpeg($img, 'assets/images/posts/'. $tmpname, 80);
  
-                    $sql = $pdo->prepare("INSERT INTO posts_imagens SET id_post = :id_posts, url =:url");
+                    $sql = $pdo->prepare("INSERT INTO posts_imagens SET id_post = :id_post, url = :url");
                     $sql->bindValue(":id_post", $id);
                     $sql->bindValue(":url", $tmpname);
                     $sql->execute();
                 }
             }
- 
          }
     }
 
-    public function excluirAnuncio($id){
+    public function excluirPost($id){
         global $pdo;
 
         $sql= $pdo->prepare("DELETE FROM posts_imagens WHERE id_post = :id_post");
@@ -109,6 +134,27 @@ class Posts{
         $sql= $pdo->prepare("DELETE FROM posts WHERE id = :id");
         $sql->bindValue(":id", $id);
         $sql->execute();
+    }
+
+    public function excluirFoto($id){
+        global $pdo;
+
+        $id_post = 0;
+
+        $sql = $pdo->prepare("SELECT id_post FROM posts_imagens WHERE id = :id");
+        $sql->bindValue(":id", $id);
+        $sql->execute();
+
+        if($sql->rowCount() > 0){
+            $row = $sql->fetch();
+            $id_post = $row['id_post'];
+        }
+
+        $sql= $pdo->prepare("DELETE FROM posts_imagens WHERE id = :id");
+        $sql->bindValue(":id", $id);
+        $sql->execute();
+
+        return $id_post;
     }
 }
 ?>

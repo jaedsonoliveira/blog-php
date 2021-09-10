@@ -1,14 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
 }
+html{
+    background-color: rgb(252, 252, 252);
 
+}
 header{
     height: 60px;
-    background-color: black;
+    background-color: #0c702d;
     color: #fff;
 }
 table{
@@ -22,6 +27,10 @@ table{
     align-items: center;
     justify-content: space-between;
     margin: auto;
+}
+h1{
+    color: #0c702d;
+    padding: 10px;
 }
 .logo{
     width: 100px;
@@ -51,4 +60,137 @@ table{
     justify-content: center;
     margin-top: 20px;
     cursor: pointer;
+}
+
+.containerpost{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(252, 252, 252);
+    height: 100vh;
+    justify-content: start;
+    align-items: start;
+    
+}
+.posts{
+    
+}
+table tbody{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100vw;
+}
+
+table td{
+    display: flex;
+    flex-direction: row;
+}
+table tr{
+    margin-right: 50px;
+    width: 30vw;
+    border: 2px solid #0c702d;
+    border-radius: 10px;
+}
+.titulo{
+    font-size: 11px;
+}
+
+
+.titulo a, .btn-add,.titulo-add, .btn-editar, .btn-excluir{
+    text-decoration: none;
+	color: #0c702d;
+	text-align: center;
+	padding: 10px;
+	font-size: 20px;
+	font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.descricao{
+    padding: 10px;
+    font-size: 15px;
+    width: 30vw;
+    margin-bottom: 20px;
+}
+
+
+.btn-add, .btn-editar,.btn-excluir, .btn-login, .btn-cadastrar{
+    border: 1px solid #0c702d;
+    background-color: #0c702d;
+    color: #fff;
+    border-radius: 14px;
+    padding: 8px;
+    font-size: 15px;
+}
+.container-meusposts{
+    margin-top: 20px;
+}
+
+.btn-editar, .btn-excluir{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+.btn-editar{
+    border: 1px solid #2c5ce2;
+    background-color: #2c5ce2;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.btn-excluir{
+    border: 1px solid #e9321a;
+    background-color: #e9321a;
+    
+}
+.btn-login, .btn-cadastrar{
+    border: 1px solid #0c702d;
+    background-color: #0c702d;
+    padding: 4px 30px;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+
+.form-group{
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.label{
+    color: #0c702d;
+}
+.input{
+    width: 40vw;
+    height: 40px;
+}
+.text-area{
+    width: 70vw;
+    height: 250px;
+    padding:10px;
+}
+.categoria{
+    width: 10vw;
+    height: 30px;
+    font-weight: 600;
+}
+
+.login, .cadastrar{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.formlogin .input, .form-cadastrar .input{
+    width: 20vw;
+    height: 30px;
+    border-radius: 6px;
+    border: 1px solid #0c702d;
+    padding:5px;
+    margin-top: 10px;
+}
+.formlogin .label{
+    width: 100px;
+    font-size: 18px;
 }

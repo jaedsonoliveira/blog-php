@@ -12,7 +12,12 @@ require 'classes/posts.class.php';
 $a = new Posts();
 
 if(isset($_GET['id']) && !empty($_GET['id'])){
-    $a->excluirPost($_GET['id']);
+    $id_post = $a->excluirFoto($_GET['id']);
 }
 
-header("Location: meus-posts.php");
+if(isset($id_post)){
+    header("Location: editar-post.php?id=".$id_post);
+}else{
+    header("Location: meus-posts.php");
+
+}

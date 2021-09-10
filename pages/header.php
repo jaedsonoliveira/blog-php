@@ -10,7 +10,7 @@
         <nav>
             <div class="container">
                 <div class="logo">
-                    <a href="/">Blog</a>
+                    <a href="index.php">Blog</a>
                 </div>
 
                 <div class="menu">

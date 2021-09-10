@@ -9,7 +9,7 @@ if(empty($_SESSION['cLogin'])){
     <?php
     exit;
 
-}
+} 
 
 //Posts
 require 'classes/posts.class.php';
@@ -52,10 +52,10 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 <div>
     <h1>Editar Post</h1>
 
-    <form method="POST" encytpe="multipart/form-data">
+    <form  method="POST" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="categoria">Categoria:</label>
-        <select name="categoria" id="categoria">
+        <label class="label" for="categoria">Categoria:</label>
+        <select class="categoria" name="categoria" id="categoria">
         <?php
         require 'classes/categorias.class.php'; //Categorias
         $c = new Categorias();
@@ -71,26 +71,34 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     </div>
 
     <div class="form-group">
-        <label for="titulo">Titulo:</label>
-        <input type="text" name="titulo" id="titulo" value=" <?php echo $info['titulo']; ?>">
+        <label  class="label" for="titulo">Titulo:</label>
+        <input class="input" type="text" name="titulo" id="titulo" value=" <?php echo $info['titulo']; ?>">
        
     </div>
 
     <div class="form-group">
-        <label for="descricao">Descrição:</label>
-        <textarea name="descricao" id="descricao" cols="100" rows="10"> <?php echo $info['descricao']; ?></textarea>
+        <label class="label" for="descricao">Descrição:</label>
+        <textarea class="text-area" name="descricao" id="descricao"> <?php echo $info['descricao']; ?></textarea>
    
     </div>
 
 
     <div class="form-group">
-        <label for="add-foto">Fotos do Anúncio:</label>
+        <label  class="label" for="add_foto">Fotos do Anúncio:</label>
         <input type="file" name="fotos[]" multiple/>
     </div>
 
     <div>
         <div>Fotos do anuncio</div>
-        <div></div>
+        <div>
+            <?php foreach($info['fotos'] as $foto): ?>
+                <div>
+                    <img src="assets/images/posts/<?php echo $foto['url']; ?>" alt="">
+                    <br>
+                    <a href="excluir-foto.php?id=<?php echo $foto['id']; ?>">Excluir Imagem</a>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
 
     <input type="submit" value="Salvar">

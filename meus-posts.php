@@ -13,14 +13,13 @@ if(empty($_SESSION['cLogin'])){
 <div>
     <h1>Meus Posts</h1>
 
-    <a href="add-post.php">Adicionar Post</a>
+    <a class="btn-add" href="add-post.php">Adicionar Post</a>
 
-    <table>
+    <table class="container-meusposts">
         <thead>
             <tr>
-                <th>Foto</th>
-                <th>Titulo</th>
-                <th>Ações</th>
+                
+               
             </tr>
         </thead>
         <?php
@@ -40,10 +39,10 @@ if(empty($_SESSION['cLogin'])){
                 <img src="assets/images/default.jpg" height="50" border="0" alt="">
                 <?php endif; ?>
             </td>
-            <td><?php echo $post['titulo']; ?></td>
+            <td class="titulo-add"><?php echo $post['titulo']; ?></td>
             <td>
-                <a href="editar-post.php?id=<?php echo $post['id']; ?>">Editar</a>
-                <a href="excluir-post.php?id=<?php echo $post['id']; ?>">Excluir</a>
+                <a class="btn-editar" href="editar-post.php?id=<?php echo $post['id']; ?>">Editar</a>
+                <a class="btn-excluir" href="excluir-post.php?id=<?php echo $post['id']; ?>">Excluir</a>
             </td>
         </tr>
         <?php endforeach; ?>

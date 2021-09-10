@@ -1,6 +1,8 @@
 <?php require 'pages/header.php'; ?>
+<link rel="stylesheet" href="assets/css/style.css">
 
-<div class="">
+
+<div class="login">
     <h1>Login</h1>
 
     <?php
@@ -28,16 +30,20 @@
     ?>
         
 
-    <form method="post">
+    <form class="formlogin" method="post">
         
+        <div class="form-group">
+        <label class="label" for="email">Email:</label>
+        <input class="input" type="email" name="email" id="nome">
+        </div>
 
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="nome">
-
-        <label for="senha">Senha:</label>
-        <input type="password" name="senha" id="senha">
-
-        <input type="submit" value="Login">
+        <div class="form-group">
+        <label class="label" for="senha">Senha:</label>
+        <input class="input" type="password" name="senha" id="senha">
+        </div>
+        
+        <input class="btn-login" type="submit" value="Login">
+        
     </form>
 </div>
 
